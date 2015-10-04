@@ -791,6 +791,7 @@ nav {
 .project-image {
     width: 50%;
     height: 100%;
+    background-position: top !important;
     border: 1px solid #cdcdcd;
 }
 
@@ -803,6 +804,7 @@ nav {
 
 .project-paragraph {
     font-family: 'Martel',serif;
+    padding: 20px 0;
 }
 
 .project-contents h2 {
@@ -1044,7 +1046,7 @@ nav {
     display: block;
     float: left;
     padding: 7px;
-    width: 25%;
+    width: 33.3333333%;
     opacity: 0;
 }
 
