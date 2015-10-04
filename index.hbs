@@ -176,11 +176,6 @@
             getProject();
         }
 
-
-        addEventListener('hashchange', function () {
-            getProject();
-        });
-
         function getProject() {
             var id = getProjectId();
             if($projectData == "") {
@@ -212,7 +207,6 @@
             var $data = data;
             jQuery.each($data.project, function(i, val) {
                 if(i == id) {
-                    console.log(val['cover-image']);
                     $('.project-image img').attr('src', './images/'+val['project-image']);
                     $('.project-details h2').html(val.title);
                     $('.project-paragraph').html(val.description);
@@ -243,6 +237,15 @@
         $( window ).resize(function() {
             if($(window).width() < 1025) {
                 $('.project-container').css('position', 'relative');
+            }
+        });
+        
+         window.addEventListener("popstate", function(){
+            var path = window.location.href;
+            if(path.indexOf("#") == -1) {
+                hideProject();
+            } else {
+                getProject();
             }
         });
 
