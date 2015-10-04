@@ -41,7 +41,7 @@
         <div class="about-image-placeholder"></div>
     <div class="about-details">
         <h3>
-           Hello
+           Welcome to my portfolio!
         </h3>
         <p>My name is Kaitlin and I'm a web developer and designer currently living in Vienna, Austria. I have just recently completed my diploma in web development and design from SAE Vienna and am searching for front-end or back-end positions.<br /><br /> <span class="s1">I am passionate about responsive designs and beautifully written programs. Because of this I put my heart and soul into achieving the highest quality web applications. My goal is to provide user friendly and intuitive websites without sacrificing design and style. To do this I am commited to staying up to date with the newest techniques and technologies.</span></p>
     </div>
@@ -219,11 +219,6 @@
             getProject();
         }
 
-
-        addEventListener('hashchange', function () {
-            getProject();
-        });
-
         function getProject() {
             var id = getProjectId();
             if($projectData == "") {
@@ -255,7 +250,6 @@
             var $data = data;
             jQuery.each($data.project, function(i, val) {
                 if(i == id) {
-                    console.log(val['cover-image']);
                     $('.project-image img').attr('src', './images/'+val['project-image']);
                     $('.project-details h2').html(val.title);
                     $('.project-paragraph').html(val.description);
@@ -286,6 +280,15 @@
         $( window ).resize(function() {
             if($(window).width() < 1025) {
                 $('.project-container').css('position', 'relative');
+            }
+        });
+        
+         window.addEventListener("popstate", function(){
+            var path = window.location.href;
+            if(path.indexOf("#") == -1) {
+                hideProject();
+            } else {
+                getProject();
             }
         });
 
